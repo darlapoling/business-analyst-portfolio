@@ -5,3 +5,4 @@ Portfolio to display the artifacts of my work as a business analyst. This includ
 | --- | --- |
 | README.md | A read me file containing an overview of this repository and navigation. |
 | Models and Diagrams  |Contains process flow diagrams, analysis diagrams, and other related documentation examples. | 
+| Case Management Project | Contains deliverables for a specific retrospective project for a state-level regulatory agency.|

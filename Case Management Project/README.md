@@ -29,5 +29,6 @@ Completed as a collaborative effort within a business analyst training cohort, t
 - RACI Matrix
 - As-is and to-be process flow diagrams
 - Roles and permissions matrix
+- Excel spreadsheet of work items, exported into ADO
 
   

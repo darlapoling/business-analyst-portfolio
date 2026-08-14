@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_PRCe360_NoLanes" targetNamespace="http://speridian.com/prce360" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="18.24.0">
+  <bpmn:process id="Process_PRCe360_NoLanes" isExecutable="false">
+    <bpmn:startEvent id="StartEvent_1" name="Tier 2 user initiates filing" />
+    <bpmn:task id="Task_SubmitFiling" name="Submit filing via public portal (PDF upload)" />
+    <bpmn:task id="Task_AssignNumbers" name="Assign case &#38; docket number" />
+    <bpmn:task id="Task_SendConfirmation" name="Send submission confirmation" />
+    <bpmn:task id="Task_IntakeReview" name="Records: intake, validate &#38; record payment" />
+    <bpmn:exclusiveGateway id="Gateway_ApproveDeny" name="Approve?" />
+    <bpmn:task id="Task_NotifyDenial" name="Notify filer of denial" />
+    <bpmn:endEvent id="EndEvent_Denied" name="Filing denied" />
+    <bpmn:task id="Task_RouteCase" name="Route case to division" />
+    <bpmn:task id="Task_JurisdictionalReview" name="Enforcement: validate jurisdictional fit &#38; coordinate" />
+    <bpmn:exclusiveGateway id="Gateway_Escalate" name="Escalate to Compliance?" />
+    <bpmn:task id="Task_LU_DraftOrder" name="Enforcement: draft &#38; issue order" />
+    <bpmn:task id="Task_ScheduleHearing" name="Compliance: schedule hearing" />
+    <bpmn:task id="Task_ReviewEvidence" name="Compliance: review evidence &#38; conduct hearing" />
+    <bpmn:task id="Task_DraftIssueOrder" name="Compliance: draft &#38; issue order/decision" />
+    <bpmn:exclusiveGateway id="Gateway_Merge" name="Case resolved" />
+    <bpmn:task id="Task_PublishStatus" name="Publish case status to portal" />
+    <bpmn:task id="Task_ManageCOS" name="Manage notification list &#38; notify parties" />
+    <bpmn:task id="Task_CloseArchive" name="Close &#38; archive case" />
+    <bpmn:endEvent id="EndEvent_Closed" name="Case closed" />
+    <bpmn:sequenceFlow id="Flow_01" sourceRef="StartEvent_1" targetRef="Task_SubmitFiling" />
+    <bpmn:sequenceFlow id="Flow_02" sourceRef="Task_SubmitFiling" targetRef="Task_AssignNumbers" />
+    <bpmn:sequenceFlow id="Flow_03" sourceRef="Task_AssignNumbers" targetRef="Task_SendConfirmation" />
+    <bpmn:sequenceFlow id="Flow_04" sourceRef="Task_SendConfirmation" targetRef="Task_IntakeReview" />
+    <bpmn:sequenceFlow id="Flow_05" sourceRef="Task_IntakeReview" targetRef="Gateway_ApproveDeny" />
+    <bpmn:sequenceFlow id="Flow_06" name="Denied" sourceRef="Gateway_ApproveDeny" targetRef="Task_NotifyDenial" />
+    <bpmn:sequenceFlow id="Flow_07" sourceRef="Task_NotifyDenial" targetRef="EndEvent_Denied" />
+    <bpmn:sequenceFlow id="Flow_08" name="Approved" sourceRef="Gateway_ApproveDeny" targetRef="Task_RouteCase" />
+    <bpmn:sequenceFlow id="Flow_09" sourceRef="Task_RouteCase" targetRef="Task_JurisdictionalReview" />
+    <bpmn:sequenceFlow id="Flow_10" sourceRef="Task_JurisdictionalReview" targetRef="Gateway_Escalate" />
+    <bpmn:sequenceFlow id="Flow_11" name="No, handle in Enforcement" sourceRef="Gateway_Escalate" targetRef="Task_LU_DraftOrder" />
+    <bpmn:sequenceFlow id="Flow_12" name="Yes" sourceRef="Gateway_Escalate" targetRef="Task_ScheduleHearing" />
+    <bpmn:sequenceFlow id="Flow_13" sourceRef="Task_ScheduleHearing" targetRef="Task_ReviewEvidence" />
+    <bpmn:sequenceFlow id="Flow_14" sourceRef="Task_ReviewEvidence" targetRef="Task_DraftIssueOrder" />
+    <bpmn:sequenceFlow id="Flow_15" sourceRef="Task_LU_DraftOrder" targetRef="Gateway_Merge" />
+    <bpmn:sequenceFlow id="Flow_16" sourceRef="Task_DraftIssueOrder" targetRef="Gateway_Merge" />
+    <bpmn:sequenceFlow id="Flow_17" sourceRef="Gateway_Merge" targetRef="Task_PublishStatus" />
+    <bpmn:sequenceFlow id="Flow_18" sourceRef="Task_PublishStatus" targetRef="Task_ManageCOS" />
+    <bpmn:sequenceFlow id="Flow_19" sourceRef="Task_ManageCOS" targetRef="Task_CloseArchive" />
+    <bpmn:sequenceFlow id="Flow_20" sourceRef="Task_CloseArchive" targetRef="EndEvent_Closed" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_PRCe360_NoLanes">
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="150" y="242" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="136" y="286" width="63" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_SubmitFiling_di" bpmnElement="Task_SubmitFiling">
+        <dc:Bounds x="230" y="220" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_AssignNumbers_di" bpmnElement="Task_AssignNumbers">
+        <dc:Bounds x="390" y="220" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_SendConfirmation_di" bpmnElement="Task_SendConfirmation">
+        <dc:Bounds x="550" y="220" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_IntakeReview_di" bpmnElement="Task_IntakeReview">
+        <dc:Bounds x="710" y="220" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_ApproveDeny_di" bpmnElement="Gateway_ApproveDeny" isMarkerVisible="true">
+        <dc:Bounds x="870" y="235" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_NotifyDenial_di" bpmnElement="Task_NotifyDenial">
+        <dc:Bounds x="960" y="100" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_Denied_di" bpmnElement="EndEvent_Denied">
+        <dc:Bounds x="1120" y="122" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1106" y="163" width="63" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_RouteCase_di" bpmnElement="Task_RouteCase">
+        <dc:Bounds x="960" y="220" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_JurisdictionalReview_di" bpmnElement="Task_JurisdictionalReview">
+        <dc:Bounds x="1120" y="220" width="120" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_Escalate_di" bpmnElement="Gateway_Escalate" isMarkerVisible="true">
+        <dc:Bounds x="1280" y="235" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1339.5" y="246" width="65" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_ScheduleHearing_di" bpmnElement="Task_ScheduleHearing">
+        <dc:Bounds x="1370" y="360" width="120" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_ReviewEvidence_di" bpmnElement="Task_ReviewEvidence">
+        <dc:Bounds x="1530" y="360" width="120" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_DraftIssueOrder_di" bpmnElement="Task_DraftIssueOrder">
+        <dc:Bounds x="1690" y="360" width="120" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_Merge_di" bpmnElement="Gateway_Merge" isMarkerVisible="true">
+        <dc:Bounds x="1850" y="235" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1834" y="403" width="71" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_PublishStatus_di" bpmnElement="Task_PublishStatus">
+        <dc:Bounds x="1940" y="220" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_ManageCOS_di" bpmnElement="Task_ManageCOS">
+        <dc:Bounds x="2100" y="220" width="120" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_CloseArchive_di" bpmnElement="Task_CloseArchive">
+        <dc:Bounds x="2260" y="220" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_Closed_di" bpmnElement="EndEvent_Closed">
+        <dc:Bounds x="2420" y="242" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2409" y="283" width="61" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_LU_DraftOrder_di" bpmnElement="Task_LU_DraftOrder">
+        <dc:Bounds x="1420" y="100" width="120" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_01_di" bpmnElement="Flow_01">
+        <di:waypoint x="186" y="260" />
+        <di:waypoint x="230" y="260" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_02_di" bpmnElement="Flow_02">
+        <di:waypoint x="350" y="260" />
+        <di:waypoint x="390" y="260" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_03_di" bpmnElement="Flow_03">
+        <di:waypoint x="510" y="260" />
+        <di:waypoint x="550" y="260" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_04_di" bpmnElement="Flow_04">
+        <di:waypoint x="670" y="260" />
+        <di:waypoint x="710" y="260" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_05_di" bpmnElement="Flow_05">
+        <di:waypoint x="830" y="260" />
+        <di:waypoint x="870" y="260" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_06_di" bpmnElement="Flow_06">
+        <di:waypoint x="895" y="235" />
+        <di:waypoint x="895" y="140" />
+        <di:waypoint x="960" y="140" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="902" y="123" width="35" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_07_di" bpmnElement="Flow_07">
+        <di:waypoint x="1080" y="140" />
+        <di:waypoint x="1120" y="140" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_08_di" bpmnElement="Flow_08">
+        <di:waypoint x="920" y="260" />
+        <di:waypoint x="960" y="260" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="906" y="235" width="47" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_09_di" bpmnElement="Flow_09">
+        <di:waypoint x="1080" y="260" />
+        <di:waypoint x="1120" y="260" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_10_di" bpmnElement="Flow_10">
+        <di:waypoint x="1240" y="260" />
+        <di:waypoint x="1280" y="260" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_11_di" bpmnElement="Flow_11">
+        <di:waypoint x="1305" y="235" />
+        <di:waypoint x="1305" y="140" />
+        <di:waypoint x="1420" y="140" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1327" y="90" width="65" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_12_di" bpmnElement="Flow_12">
+        <di:waypoint x="1305" y="285" />
+        <di:waypoint x="1305" y="400" />
+        <di:waypoint x="1370" y="400" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1331" y="373" width="18" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_13_di" bpmnElement="Flow_13">
+        <di:waypoint x="1490" y="400" />
+        <di:waypoint x="1530" y="400" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_14_di" bpmnElement="Flow_14">
+        <di:waypoint x="1650" y="400" />
+        <di:waypoint x="1690" y="400" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_15_di" bpmnElement="Flow_15">
+        <di:waypoint x="1540" y="140" />
+        <di:waypoint x="1875" y="140" />
+        <di:waypoint x="1875" y="235" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_16_di" bpmnElement="Flow_16">
+        <di:waypoint x="1810" y="400" />
+        <di:waypoint x="1875" y="400" />
+        <di:waypoint x="1875" y="285" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_17_di" bpmnElement="Flow_17">
+        <di:waypoint x="1900" y="260" />
+        <di:waypoint x="1940" y="260" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_18_di" bpmnElement="Flow_18">
+        <di:waypoint x="2060" y="260" />
+        <di:waypoint x="2100" y="260" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_19_di" bpmnElement="Flow_19">
+        <di:waypoint x="2220" y="260" />
+        <di:waypoint x="2260" y="260" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_20_di" bpmnElement="Flow_20">
+        <di:waypoint x="2380" y="260" />
+        <di:waypoint x="2420" y="260" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

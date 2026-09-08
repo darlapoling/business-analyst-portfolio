@@ -34,7 +34,8 @@ The business problem is that the old system was outdated and inefficient, causin
 
 
 ## Mistakes & Fixes
-[Space reserved — add specific issue(s) caught and corrected here]
+* Defining scope too narrowly.
+* User stories initially not atomic. 
 
 ## Deliverables
 * Business Requirement Document
@@ -45,11 +46,9 @@ The business problem is that the old system was outdated and inefficient, causin
 * Excel spreadsheet of work items, exported into ADO
 
 ## How to View
-This project is hosted as a folder within a repo / on the portfolio site — link below.
-[Space reserved — add repo folder link or portfolio project link]
+This project is hosted as a folder within the Business Analyst Portfolio repo / on the portfolio site — link below.
+(Portfolio Page)[https://darlapoling.github.io/portfolio/BA_Case_Management.html]
 
-## Repo Structure
-[Space reserved — add if hosted as a repo folder]
 
 ## Next Steps
 [Space reserved]

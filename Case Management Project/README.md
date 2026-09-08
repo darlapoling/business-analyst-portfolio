@@ -47,7 +47,7 @@ The business problem is that the old system was outdated and inefficient, causin
 
 ## How to View
 This project is hosted as a folder within the Business Analyst Portfolio repo / on the portfolio site — link below.
-(Portfolio Page)[https://darlapoling.github.io/portfolio/BA_Case_Management.html]
+[Portfolio Page](https://darlapoling.github.io/portfolio/BA_Case_Management.html)
 
 
 ## Next Steps

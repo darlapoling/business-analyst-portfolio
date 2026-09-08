@@ -46,7 +46,8 @@ The business problem is that the old system was outdated and inefficient, causin
 * Excel spreadsheet of work items, exported into ADO
 
 ## How to View
-This project is hosted as a folder within the Business Analyst Portfolio repo / on the portfolio site — link below.
+This project is hosted as a folder within the Business Analyst Portfolio repo / on the portfolio site.
+  
 [Portfolio Page](https://darlapoling.github.io/portfolio/BA_Case_Management.html)
 
 

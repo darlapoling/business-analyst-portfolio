@@ -9,7 +9,7 @@ A state-level regulatory agency needs to replace its outdated software system fo
 * JAD (Joint Application Development) sessions
 * Meeting Minutes
 
-Because this project is retrospective and was designed for the solution configurators to implement in a month — the same time we had to gather and define requirements — the scope of the project was significantly reduced and many divisions were cut out of the workflows we produced. This demonstrates a capacity to make decisions about the scope of a project given strict constraints on time and resources. Additionally, the collaboration helped me hone my leadership and interpersonal skills. By scheduling meetings, organizing collaboration sessions with stakeholders, and ensuring that every requirement is met and traceable, we were able to align stakeholder interests and agree on a common goal for the project.
+Because this project is retrospective and was designed for the solution configurators to implement in a month, the same time we had to gather and define requirements, the scope of the project was significantly reduced and many divisions were cut out of the workflows we produced. This demonstrates a capacity to make decisions about the scope of a project given strict constraints on time and resources. Additionally, the collaboration helped me hone my leadership and interpersonal skills. By scheduling meetings, organizing collaboration sessions with stakeholders, and ensuring that every requirement is met and traceable, we were able to align stakeholder interests and agree on a common goal for the project.
 
 ## Business Problem
 The business problem is that the old system was outdated and inefficient, causing wasted time due to manual steps and lack of automatic communication. For example, service lists (lists which describe who notices need to be served to) were compiled manually by members of the Records staff division. When they wanted to delete an individual off a list, the system wasn't able to edit the list, instead it produced an entirely new list with everyone but the excluded party. These lists could not be automatically managed using the old system.
@@ -32,6 +32,7 @@ The business problem is that the old system was outdated and inefficient, causin
 
 ## Key Findings / Visualizations
 
+[Space reserved]
 
 ## Mistakes & Fixes
 * Defining scope too narrowly.
